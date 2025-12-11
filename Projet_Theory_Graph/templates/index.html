@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python backend</title>
+</head>
+<body>
+    <h1>Page servie par Flask</h1>
+
+    <p>Message envoyé par Python :</p>
+    <h2>{{ msg }}</h2>
+
+    <hr>
+
+    <button onclick="appelAPI()">Appeler Python</button>
+
+    <p id="resultat"></p>
+
+    <script>
+    function appelAPI() {
+        fetch("/calcul")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("resultat").innerText =
+                    "Résultat du Python : " + data.resultat;
+            });
+    }
+    </script>
+
+</body>
+</html>
